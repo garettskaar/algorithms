@@ -3,9 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github/garettskaar/algorithms/fibonacci"
+	"log"
 	"os"
 	"time"
+
+	"github.com/garettskaar/algorithms/fibonacci"
 )
 
 func main() {
@@ -27,8 +29,11 @@ func main() {
 		}
 	}
 	start := time.Now()
-	result := fibonacci.FibDynamic(*nPtr)
+	result, err := fibonacci.FibDynamic(*nPtr)
 	duration := time.Since(start)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Printf("Fibonacci(%d) = %d\nExecution time: %s", *nPtr, result, duration)
 }
