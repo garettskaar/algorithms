@@ -1,3 +1,3 @@
-module github.com/garettskaar/algorithms/fibonacci
+module fibonacci
 
 go 1.16
