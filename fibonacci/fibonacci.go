@@ -32,3 +32,18 @@ func FibDynamic(n int) (*big.Int, error) {
 	}
 	return f[n], nil
 }
+
+// FibRecursive implements the classic recursive fibonacci sequence.
+// It uses big.Int to calculate very large fibonacci numbers.
+func FibRecursive(n int64) *big.Int {
+	// Base case / Negative 'n' catch
+	if n <= 1 {
+		if n < 0 {
+			return big.NewInt(0)
+		} else {
+			return big.NewInt(n)
+		}
+	}
+	var sumPtr = big.NewInt(n).Add(FibRecursive(n-1), FibRecursive(n-2))
+	return sumPtr
+}
