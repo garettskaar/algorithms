@@ -7,12 +7,14 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	selectionsort "github.com/garettskaar/algorithms/selection_sort"
 )
 
 func main() {
 	// User chosen sorting algorithm
 	var sortAlgo string
-	flag.StringVar(&sortAlgo, "sort", "quick", "The sorting algorithm to use.")
+	flag.StringVar(&sortAlgo, "sort", "selection", "The sorting algorithm to use.")
 	// User chosen input file
 	input_file := flag.String("input", "unsorted_array.txt", "The input array to be sorted.\nThis can be a text file with comma/space seperated values.")
 	// Parse command line args
@@ -33,7 +35,7 @@ func main() {
 		printIntArray(sortMe)
 	case "selection":
 		fmt.Println("Using selection sort...")
-		//Todo call selection sort here
+		selectionsort.SelectionSortInt(sortMe)
 	case "merge":
 		fmt.Println("Using merge sort...")
 		//Todo call merge sort here
@@ -46,9 +48,8 @@ func main() {
 	default:
 		fmt.Println("Using default quick sort...")
 		//Todo call quick sort here
-		printIntArray(sortMe)
 	}
-
+	printIntArray(sortMe)
 }
 func initArrayFromFile(fileContent string) []int {
 	// Slice of number stings
