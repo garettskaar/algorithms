@@ -26,17 +26,17 @@ func main() {
 	sortMe := initArrayFromFile(string(data))
 	// User input to lower case
 	strings.ToLower(sortAlgo)
+	// Determine which sort to use
 	switch sortAlgo {
 	case "quick":
 		fmt.Println("Using quick sort...")
-		//Todo call quick sort here
-		printIntArray(sortMe)
+		quickSortInt(sortMe, 0, len(sortMe)-1)
 	case "selection":
 		fmt.Println("Using selection sort...")
 		selectionSortInt(sortMe)
 	case "merge":
 		fmt.Println("Using merge sort...")
-		//Todo call merge sort here
+		mergeSortInt(sortMe, 0, len(sortMe)-1)
 	case "insertion":
 		fmt.Println("Using insertion sort...")
 		insertionSortInt(sortMe)
@@ -45,10 +45,13 @@ func main() {
 		bubbleSortInt(sortMe)
 	default:
 		fmt.Println("Using default quick sort...")
-		//Todo call quick sort here
+		quickSortInt(sortMe, 0, len(sortMe)-1)
 	}
+	// Print the results
 	printIntArray(sortMe)
 }
+
+// Build an []int from the file contents ([]string)
 func initArrayFromFile(fileContent string) []int {
 	// Slice of number stings
 	var nums []string
@@ -73,6 +76,7 @@ func initArrayFromFile(fileContent string) []int {
 	return unsortedArray
 }
 
+// Print the []int
 func printIntArray(arr []int) {
 	for _, n := range arr {
 		fmt.Printf("%d ", n)
