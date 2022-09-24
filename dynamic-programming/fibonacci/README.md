@@ -10,3 +10,5 @@ To build the program:
 To run the program (default n = 42):
 
 `main.go -n=<fibonacci number>`
+
+makeing a readme change
